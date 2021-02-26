@@ -44,6 +44,7 @@ pub enum Info {
     },
 }
 
+#[derive(Default)]
 pub struct EventAccumulator {
     pub events: Vec<Event>,
 }
