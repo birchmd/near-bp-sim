@@ -27,8 +27,11 @@ fn main() {
         .collect();
 
     let mut simulation = Simulation::new(&initial_stakes, params);
-    let mut events = event::EventBlackHole;
-    simulation.run(1_000_000, &mut events);
+    let mut events = event::StatsAccumulator::default();
+    simulation.run(100, &mut events);
+    events
+        .write_stats("/home/birchmd/rust/near-bp-sim/sim_stats.csv")
+        .unwrap();
 
     println!("{:?}", simulation.stake_fraction());
 }
