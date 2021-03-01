@@ -402,12 +402,12 @@ fn update_roles<T: EventConsumer, R: Rng, S: BuildHasher>(
     let mut cop_proposals = Vec::with_capacity(params.num_chunk_only_producers);
 
     for p in participants.values() {
-        // 80% chance to switch roles if the grass is greener on the other side, 20% otherwise
+        // 5% chance to switch roles if the grass is greener on the other side, 1% otherwise
         let probability_to_switch =
             if p.most_recent_stake_change > p.expected_stake_change_on_switch {
-                0.2f64
+                0.01f64
             } else {
-                0.8f64
+                0.05f64
             };
         let x: f64 = rng.gen();
         match &p.role {
