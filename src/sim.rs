@@ -4,9 +4,12 @@ use crate::role::Role;
 
 use rand::Rng;
 
+use serde::{Deserialize, Serialize};
+
 use std::collections::HashMap;
 use std::hash::BuildHasher;
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Params {
     pub num_block_producers: usize,
     pub num_chunk_only_producers: usize,
